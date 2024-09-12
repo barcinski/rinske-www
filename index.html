@@ -288,7 +288,9 @@
 				camera.updateProjectionMatrix();
 
 				renderer.setSize( window.innerWidth, window.innerHeight );
-				const scale = window.innerWidth / 1500 ;
+				let scale = camera.aspect/2 //(Math.sqrt(window.innerWidth) / 150) + (Math.sqrt(window.innerHeight)/150)  ;
+				// if(window.innerWidth < window.innerHeight)
+				// 	scale = Math.sqrt(window.innerHeight)/75;
 				group.scale.set(scale, scale , scale);
 
 				//render();
