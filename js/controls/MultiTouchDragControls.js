@@ -179,7 +179,8 @@ class MultiTouchDragControls extends EventDispatcher {
 			if ( scope.enabled === false ) return;
 
             
-            console.log(pointers.length , isTrackingPointer(event))
+            //console.log(pointers.length , isTrackingPointer(event))
+			scope.dispatchEvent({ type:'pointer' });
             if( isTrackingPointer(event)) return;
                 
             addPointer(event);
