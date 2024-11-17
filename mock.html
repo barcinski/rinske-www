@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+
+        <style>
+            body {
+                padding: 0px;
+                margin: 0px;
+            }
+
+            a {
+                display: block;
+                /* border: 10px solid red; */
+                width: 80vw;
+                height: 80vh;
+
+                
+            }
+
+            iframe , img {
+                width: 80vw;
+                height: 80vh;
+                
+                border: 0;
+                object-fit: contain;
+                border:  5px solid red;
+                background-color: black;
+            }
+
+            #myFrame {
+                position: absolute;
+                right: 0px;
+            }
+
+            .right {
+                margin-left: auto;
+                margin-right: 0;
+            }
+
+            h1 {
+                font-size: 172pt;
+            }
+
+            .spacer {
+                display: block;
+                height: 172pt;
+            }
+        </style>
+
+        <script>
+            var lastClicked;
+            function goToFrame(href, src, isRight = false){
+                lastClicked = src;
+                myFrame.src = href;
+                console.log(src.offsetTop);
+
+                myFrame.style.left = src.offsetLeft + "px";
+                myFrame.style.top = src.offsetTop + "px";
+
+                if(isRight)
+                    myFrame.classList.add("right");
+                else
+                    myFrame.classList.remove("right");
+
+                return false;
+
+                
+            }
+
+            window.onresize = function(){
+                if(lastClicked){
+                    myFrame.style.left = lastClicked.offsetLeft + "px";
+                    myFrame.style.top = lastClicked.offsetTop + "px";
+
+                }
+            }
+
+        </script>
+    </head>
+    <body>
+        <h1>Rinske Dekker</h1>
+        <iframe id="myFrame" src="kompleks_01.html"></iframe>
+        <a class="right" href="javascript:void(0)" onclick="return goToFrame('kompleks_01.html',this,true);" ontouchstart="return goToFrame('kompleks_01.html',this,true);">
+            <img src="dev/kompleks_01.png"></img>
+        </a>
+        <div class="spacer"></div>
+
+        <a href="javascript:void(0)" onclick="return goToFrame('kompleks_02.html',this);" ontouchstart="return goToFrame('kompleks_02.html',this);">
+            <img src="dev/kompleks_02.png"></img>
+        </a>
+        <div class="spacer"></div>
+
+        <a class="right" href="javascript:void(0)" onclick="return goToFrame('brainblock_07.html',this,true);" ontouchstart="return goToFrame('brainblock_07.html',this,true);">
+            <img src="dev/brainblock_07.png"></img>
+        </a>
+        <div class="spacer"></div>
+
+        <a href="javascript:void(0)" onclick="return goToFrame('brainblock_14.html',this);" ontouchstart="return goToFrame('brainblock_14.html',this);">
+            <img src="dev/brainblock_14.png"></img>
+        </a>
+        <div class="spacer"></div>
+       
+        
+    </body>
+</html>
