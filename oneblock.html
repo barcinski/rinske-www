@@ -1,28 +1,11 @@
 <!DOCTYPE html>
 <html lang="en">
 	<head>
-<!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-YZRNXYYPJ2"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-
-  gtag('config', 'G-YZRNXYYPJ2');
-</script>
 		<title>Rinske OneBLock</title>
 		<meta charset="utf-8">
 		<meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
 		<link type="text/css" rel="stylesheet" href="css/main.css">
-		<style>
-			body {
-				background-color: #000;
-				color: #444;
-			}
-			a {
-				color: #08f;
-			}
-		</style>
+		
 	</head>
 	<body>
 
@@ -104,7 +87,7 @@
 				camera.position.z = 2;
 
 				scene = new THREE.Scene();
-				scene.background = new THREE.Color( 0x000 );
+				//scene.background = new THREE.Color( 0x000 );
 
 				scene.add( new THREE.AmbientLight( 0xaaaaaa ) );
 
@@ -163,6 +146,7 @@
 				renderer.setSize( window.innerWidth, window.innerHeight );
 				renderer.shadowMap.enabled = true;
 				renderer.shadowMap.type = THREE.PCFShadowMap;
+				renderer.setClearColor( new THREE.Color( 0xFFFFFF ) );
 				
 				container.appendChild( renderer.domElement );
 

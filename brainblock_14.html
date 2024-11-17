@@ -35,7 +35,7 @@
 				document.body.appendChild( container );
 
 				camera = new THREE.PerspectiveCamera( 45, window.innerWidth / window.innerHeight, 0.25, 20 );
-				camera.position.set( - 1.8, 0.6, 2.7 );
+				camera.position.set( 0, 0.0, 2.7 );
 
 				scene = new THREE.Scene();
 
@@ -45,8 +45,9 @@
 
                     const model = gltf.scene;
 
-                    model.scale.set(10,10,10);
-                    model.position.set(0,-1,0)
+                    model.scale.set(11,11,11);
+					//model.rotateY(1.05 - Math.PI/2)
+                    model.position.set(0,-.8,0)
 
                     // wait until the model can be added to the scene without blocking due to shader compilation
 
@@ -65,6 +66,7 @@
 				renderer.setSize( window.innerWidth, window.innerHeight );
 				renderer.toneMapping = THREE.ACESFilmicToneMapping;
 				renderer.toneMappingExposure = 1;
+				renderer.setClearColor( new THREE.Color( 0xFFFFFF ) );
 				container.appendChild( renderer.domElement );
 
 				const controls = new OrbitControls( camera, renderer.domElement );

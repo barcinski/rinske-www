@@ -1,64 +1,64 @@
 <!DOCTYPE html>
 <html lang="en">
     <head>
+        <!-- Google tag (gtag.js) -->
+        <script async src="https://www.googletagmanager.com/gtag/js?id=G-YZRNXYYPJ2"></script>
+        <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
 
+        gtag('config', 'G-YZRNXYYPJ2');
+        </script>
+        
+        <title>rinske dekker</title>
         <style>
             body {
                 padding: 0px;
                 margin: 0px;
+                background-color: #edc1c1;
+                text-align: center;
             }
 
-            a {
-                display: block;
-                /* border: 10px solid red; */
-                width: 80vw;
-                height: 80vh;
-
-                
-            }
 
             iframe , img {
-                width: 80vw;
-                height: 80vh;
-                
+                width: 80vmin;
+                height: 80vmin;
+                /* display: block; */
                 border: 0;
+                
+                margin: 20px;
+                border-radius: 50px;
                 object-fit: cover;
             }
 
             #myFrame {
                 position: absolute;
-                right: 0px;
-            }
-
-            .right {
-                margin-left: auto;
-                margin-right: 0;
+                visibility: hidden;
+                margin: 0px;
+                left: 0px;
             }
 
             h1 {
-                font-size: 172pt;
+                font-size: 48pt;
+                margin-left: 40px;
+                margin-right: 40px;
+                color: #f4741d;
             }
 
-            .spacer {
-                display: block;
-                height: 172pt;
-            }
+          
         </style>
 
         <script>
             var lastClicked;
-            function goToFrame(href, src, isRight = false){
+            function goToFrame(href, src){
                 lastClicked = src;
                 myFrame.src = href;
-                console.log(src.offsetTop);
+               
+                myFrame.style.left = src.offsetLeft  + "px";
+                myFrame.style.top = src.offsetTop  + "px";
 
-                myFrame.style.left = src.offsetLeft + "px";
-                myFrame.style.top = src.offsetTop + "px";
-
-                if(isRight)
-                    myFrame.classList.add("right");
-                else
-                    myFrame.classList.remove("right");
+                myFrame.style.visibility = 'hidden';
 
                 return false;
 
@@ -69,35 +69,41 @@
                 if(lastClicked){
                     myFrame.style.left = lastClicked.offsetLeft + "px";
                     myFrame.style.top = lastClicked.offsetTop + "px";
-
+                }else{
+                    myFrame.style.left = image00.offsetLeft + "px";
+                    myFrame.style.top = image00.offsetTop + "px";
                 }
             }
 
         </script>
     </head>
     <body>
-        <h1>Rinske Dekker</h1>
-        <iframe id="myFrame" src="kompleks_01.html"></iframe>
-        <a class="right" href="javascript:void(0)" onclick="return goToFrame('kompleks_01.html',this,true);" ontouchstart="return goToFrame('kompleks_01.html',this,true);">
-            <img src="dev/kompleks_01.png"></img>
-        </a>
-        <div class="spacer"></div>
-
-        <a href="javascript:void(0)" onclick="return goToFrame('kompleks_02.html',this);" ontouchstart="return goToFrame('kompleks_02.html',this);">
-            <img src="dev/kompleks_02.png"></img>
-        </a>
-        <div class="spacer"></div>
-
-        <a class="right" href="javascript:void(0)" onclick="return goToFrame('brainblock_07.html',this,true);" ontouchstart="return goToFrame('brainblock_07.html',this,true);">
-            <img src="dev/brainblock_07.png"></img>
-        </a>
-        <div class="spacer"></div>
-
-        <a href="javascript:void(0)" onclick="return goToFrame('brainblock_14.html',this);" ontouchstart="return goToFrame('brainblock_14.html',this);">
-            <img src="dev/brainblock_14.png"></img>
-        </a>
-        <div class="spacer"></div>
+        <h1>rinske dekker</h1>
+        <iframe id="myFrame" src="kompleks_01.html" onload="this.style.visibility = 'visible';console.log('iframe loaded')"></iframe>
+        
+        <img id="image00" src="img/kompleks_01.jpg" onmouseenter="goToFrame('kompleks_01.html',this);" ontouchstart="return goToFrame('kompleks_01.html',this,true);"></img>
        
+        
+        <img src="img/kompleks_02.jpg" onmouseenter="return goToFrame('kompleks_02.html',this);" ontouchstart="return goToFrame('kompleks_02.html',this);"></img>
+      
+
+        <img src="img/brainblock_07.jpg" onmouseenter="return goToFrame('brainblock_07.html',this);" ontouchstart="return goToFrame('brainblock_07.html',this,true);"></img>
+       
+
+        <img src="img/brainblock_14.jpg" onmouseenter="return goToFrame('brainblock_14.html',this);" ontouchstart="return goToFrame('brainblock_14.html',this);"></img>
+
+
+        <img src="img/oneblock.jpg" onmouseenter="return goToFrame('oneblock.html',this);" ontouchstart="return goToFrame('oneblock.html',this);"></img>
+
+
+      
+
+       
+       
+        <script>
+            myFrame.style.left = image00.offsetLeft + "px";
+            myFrame.style.top = image00.offsetTop + "px";
+        </script>
         
     </body>
 </html>
