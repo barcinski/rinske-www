@@ -80,11 +80,15 @@
                 }
             }
 
+            window.showIframme = function(){
+                myFrame.style.visibility = 'visible';
+            }
+
         </script>
     </head>
     <body>
         <h1>rinske dekker</h1>
-        <iframe id="myFrame" src="kompleks_01.html" onload="this.style.visibility = 'visible';console.log('iframe loaded')"></iframe>
+        <iframe id="myFrame" src="kompleks_01.html" onload="console.log('iframe loaded')"></iframe>
         
         <img id="image00" src="img/kompleks_01.jpg" onmouseenter="goToFrame('kompleks_01.html',this);" ontouchstart="return goToFrame('kompleks_01.html',this,true);"></img>
        
