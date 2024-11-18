@@ -53,7 +53,12 @@
             var lastClicked;
             function goToFrame(href, src){
                 lastClicked = src;
-                myFrame.src = href;
+
+
+                //removing iFrame from dom and changin src prvents history entry
+                var foo = document.body.removeChild(myFrame)
+                foo.src = href;
+                document.body.appendChild(foo)
                
                 myFrame.style.left = src.offsetLeft  + "px";
                 myFrame.style.top = src.offsetTop  + "px";
