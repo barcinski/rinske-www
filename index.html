@@ -22,7 +22,7 @@
             }
 
 
-            iframe , img {
+            iframe , img , #progress{
                 width: 80vmin;
                 height: 80vmin;
                 /* display: block; */
@@ -33,6 +33,38 @@
                 object-fit: cover;
             }
 
+            #progress {
+                margin: 0px;
+                position: absolute;
+                background-color: #f4741d;
+                
+                vertical-align: middle;
+                
+            }
+
+
+
+            .loader {
+                margin: 0;
+                position: absolute;
+                top: 50%;
+                left : 50%;
+                transform: translateY(-50%);
+                transform: translateX(-50%);
+
+
+                width: 120px;
+                height: 20px;
+                background:
+                linear-gradient(#fff 0 0) 0/0% no-repeat
+                #ccc;
+                animation: l1 2s infinite linear;
+                }
+                @keyframes l1 {
+                    100% {background-size:100%}
+                }
+            
+
             #myFrame {
                 position: absolute;
                 visibility: hidden;
@@ -41,7 +73,7 @@
             }
 
             h1 {
-                font-size: 48pt;
+                font-size: 12vmin;
                 margin-left: 40px;
                 margin-right: 40px;
                 color: #f4741d;
@@ -61,23 +93,28 @@
                 foo.src = href;
                 document.body.appendChild(foo)
                
-                myFrame.style.left = src.offsetLeft  + "px";
-                myFrame.style.top = src.offsetTop  + "px";
+                setIframePos(src)
+                
 
                 myFrame.style.visibility = 'hidden';
 
-                return false;
+                return false; 
+            }
 
-                
+            function setIframePos(target){
+                myFrame.style.left = target.offsetLeft  + "px";
+                myFrame.style.top = target.offsetTop  + "px";
+
+                progress.style.left = target.offsetLeft  + "px";
+                progress.style.top = target.offsetTop  + "px";
             }
 
             window.onresize = function(){
                 if(lastClicked){
-                    myFrame.style.left = lastClicked.offsetLeft + "px";
-                    myFrame.style.top = lastClicked.offsetTop + "px";
+                    setIframePos(lastClicked)
+                    
                 }else{
-                    myFrame.style.left = image00.offsetLeft + "px";
-                    myFrame.style.top = image00.offsetTop + "px";
+                    setIframePos(image00)
                 }
             }
 
@@ -89,6 +126,9 @@
     </head>
     <body>
         <h1>rinske dekker</h1>
+        <div id="progress">
+            <div class="loader"></div>
+        </div>
         <iframe id="myFrame" src="kompleks_01.html" onload="console.log('iframe loaded')"></iframe>
         
         <img id="image00" src="img/kompleks_01.jpg" onmouseenter="goToFrame('kompleks_01.html',this);" ontouchstart="return goToFrame('kompleks_01.html',this,true);"></img>
@@ -111,8 +151,7 @@
        
        
         <script>
-            myFrame.style.left = image00.offsetLeft + "px";
-            myFrame.style.top = image00.offsetTop + "px";
+            setIframePos(image00);
         </script>
         
     </body>
