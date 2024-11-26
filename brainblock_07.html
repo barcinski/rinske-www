@@ -27,6 +27,7 @@
             
 			
 			let camera, scene, renderer;
+			let model, controls;
 
 			init();
 
@@ -44,7 +45,7 @@
                 const loader = new GLTFLoader().setPath( 'models/' );
                 loader.load( 'Brainblock_07.gltf', async function ( gltf ) {
 
-                    const model = gltf.scene;
+                    model = gltf.scene;
 
                     model.scale.set(10,10,10);
 					model.rotateY(-.3 )
@@ -56,7 +57,7 @@
 
                     scene.add( model );
 
-                    render();
+                    renderer.setAnimationLoop(animate);
 
 					if(inIframe()){
 						window.parent.showIframme();
@@ -74,8 +75,8 @@
 				renderer.setClearColor( new THREE.Color( 0xFFFFFF ) );
 				container.appendChild( renderer.domElement );
 
-				const controls = new OrbitControls( camera, renderer.domElement );
-				controls.addEventListener( 'change', render ); // use if there is no animation loop
+				controls = new OrbitControls( camera, renderer.domElement );
+				controls.addEventListener( 'change', stopAnim ); // use if there is no animation loop
 				controls.minDistance = 2;
 				controls.maxDistance = 10;
 				controls.target.set( 0, 0, - 0.2 );
@@ -101,6 +102,19 @@
 			}
 
 			//
+			function animate(){
+				model.rotateY(-0.01);
+				render();
+			}
+
+			function stopAnim(){
+				//console.log('stop anim')
+				controls.removeEventListener( 'change' , controls._listeners['change'] );
+				controls.addEventListener( 'change', render );
+
+				renderer.setAnimationLoop(null);
+				
+			}
 
 			function render() {
 
