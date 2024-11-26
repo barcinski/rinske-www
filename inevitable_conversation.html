@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 	<head>
-		<title>A fucking walk for my mental health</title>
+		<title>Inevitable conversation</title>
 		<meta charset="utf-8">
 		<meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
 		<link type="text/css" rel="stylesheet" href="css/main.css">
@@ -43,14 +43,15 @@
 
 
                 const loader = new GLTFLoader().setPath( 'models/' );
-                loader.load( 'A_fucking_walk.gltf', async function ( gltf ) {
+                loader.load( 'Inevitable_conversation.gltf', async function ( gltf ) {
 
                     model = gltf.scene;
 
-					const scale = 11;
+					const scale = 10.5;
                     model.scale.set(scale,scale,scale);
-					//model.rotateY(1 - Math.PI/2)
-                    model.position.set(0,-.8,0)
+					model.rotateY(  0.05)
+					model.rotateX(-  0.04)
+                    model.position.set(0,-.88,0)
 
                     // wait until the model can be added to the scene without blocking due to shader compilation
 
