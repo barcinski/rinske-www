@@ -49,9 +49,9 @@
 
 					const scale = 12;
                     model.scale.set(scale,scale,scale);
-					model.rotateY(-.05 )
+					//model.rotateY(-.05 )
 					//model.rotateX(.1);
-                    model.position.set(0,-.85,-.1)
+                    model.position.set(0,-.8,-.1)
 
 
                     // wait until the model can be added to the scene without blocking due to shader compilation
@@ -61,6 +61,7 @@
                     scene.add( model );
 
                     renderer.setAnimationLoop(animate);
+					// render();
 
 					if(inIframe()){
 						window.parent.showIframme();
@@ -81,7 +82,7 @@
 				controls = new OrbitControls( camera, renderer.domElement );
 				controls.addEventListener( 'change', stopAnim ); // use if there is no animation loop
 				controls.minDistance = 2;
-				controls.maxDistance = 10;
+				controls.maxDistance = 4;
 				controls.target.set( 0, 0, - 0.2 );
 
 				//controls.minPolarAngle  = 0;

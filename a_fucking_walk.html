@@ -43,11 +43,11 @@
 
 
                 const loader = new GLTFLoader().setPath( 'models/' );
-                loader.load( 'Kompleks_01.gltf', async function ( gltf ) {
+                loader.load( 'A_fucking_walk.gltf', async function ( gltf ) {
 
                     model = gltf.scene;
 
-					const scale = 12;
+					const scale = 11;
                     model.scale.set(scale,scale,scale);
 					//model.rotateY(1 - Math.PI/2)
                     model.position.set(0,-.8,0)
@@ -59,6 +59,7 @@
                     scene.add( model );
 
                     renderer.setAnimationLoop(animate);
+					// render();
 
 					if(inIframe()){
 						window.parent.showIframme();
@@ -82,8 +83,9 @@
 				controls.maxDistance = 4;
 				controls.target.set( 0, 0, - 0.2 );
 
-				controls.minPolarAngle  = 0;
-				controls.maxPolarAngle = Math.PI/1.75;
+				//limit vertical rotation
+				//controls.minPolarAngle  = 0;
+				//controls.maxPolarAngle = Math.PI/1.75;
 
 				controls.update();
 
