@@ -55,17 +55,64 @@
                 myFrame.style.visibility = 'visible';
             }
 
+            function showAbout(){
+                //about.classList.add("on");
+                //overwrite what is in style to fix ios h-scroll navigation
+                about.style.left = "0px";
+            }
+
+            function hideAbout(){
+                //about.classList.remove("on");
+                about.style.left = "100vw";
+            }
+
         </script>
     </head>
     <body>
-        <h1>rinske dekker</h1>
+        <div id="about">
+            <a href="javascript:hideAbout()" id="closeBtn">x</h1>
+            <h1><a href="javascript:hideAbout()">about:</a></h1>
+
+            <img class="studio" src="img/studio.jpg"/>
+
+            <p>Rinske Dekker is an artist who works and plays in her home studio in Amsterdam.</p>
+
+            
+
+            <p>She paints and draws on small and tiny pieces of second hand wood, 
+                like old toy blocks or pieces found on the street with which she then 
+                makes small sculptures and assemblages.</p>
+
+            <p>Her work is about memories, dreams, stories and observations. 
+                How personal they can be. How alternately vague and clear they can be in your head. 
+                How surreal, beautiful or ugly and how personal that is too.</p>
+
+            <p>In all that humour and play is also very important.</p>
+
+            <p>Next to that it is about colour. She loves colour and loves to research how colours work together. 
+                And in that textures and shapes are very important. 
+                Colours work differently in different shapes, sizes and combinations.</p>
+
+            <p>Her main materials are acrylic paint, (graphite) pencil and wood. 
+                Sometimes a vintage portrait photo or a bit of plastic or metal works its way in as well.</p>
+
+            <h1><a href="javascript:hideAbout()">contact:</a></h1>
+
+            <p>rinske.dekker@gmail.com</p>
+
+            <p><a href="https://www.instagram.com/rinsdekker/"><img src="img/svg/instagram.svg" width="64"/></a> 
+             <a href="https://www.redbubble.com/people/RinsDekker/explore?page=1&sortOrder=recent"><img src="img/svg/redbubble.svg" width="64"/></a></p>
+
+            <p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p>
+        </div>
+        <h1><a href="javascript:showAbout()">rinske dekker</a></h1>
         <div id="progress">
             <div class="loader"></div>
         </div>
         <iframe id="myFrame" src="kompleks_01.html" onload="console.log('iframe loaded')"></iframe>
         
 
-        <img class="item" id="image00" src="img/kompleks_01.jpg" onmouseenter="goToFrame('kompleks_01.html',this);" ontouchstart="return goToFrame('kompleks_01.html',this,true);"></img>
+        <img id="image00" class="item" src="img/kompleks_01.jpg" onmouseenter="goToFrame('kompleks_01.html',this);" ontouchstart="return goToFrame('kompleks_01.html',this,true);"></img>
        
         <img class="item" src="img/kompleks_02.jpg" onmouseenter="return goToFrame('kompleks_02.html',this);" ontouchstart="return goToFrame('kompleks_02.html',this);"></img>
 
@@ -87,8 +134,9 @@
 
         <img class="item" src="img/oneblock.jpg" onmouseenter="return goToFrame('oneblock.html',this);" ontouchstart="return goToFrame('oneblock.html',this);"></img>
 
-
-      
+        <p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p>
+        
+        
 
        
        
