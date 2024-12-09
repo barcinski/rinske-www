@@ -3,7 +3,7 @@ body {
     margin: 0px;
     background-color: #edc1c1;
     text-align: center;
-    font-family: 'Cooper Black';
+    font-family: "Helvetica Neue";
 }
 
 
@@ -13,8 +13,8 @@ iframe , img.item , #progress{
     /* display: block; */
     border: 0;
     
-    margin: 25px;
-    border-radius: 50px;
+    margin: 5vmin;
+    border-radius: 8vmin;
     object-fit: cover;
 }
 
@@ -56,19 +56,28 @@ iframe , img.item , #progress{
     left: 0px;
 }
 
-h1 {
+h1,h2 {
+    font-family: 'Cooper Black';
     font-size: 10vmin;
     font-weight: 100;
-    margin-left: 40px;
-    margin-right: 40px;
+    margin-left: 10vmin;
+    margin-right: 10vmin;
     color: #f4741d;
 }
 
-h1 a {
+h1 {
+    margin-bottom: 3vmin;
+}
+
+h2 {
+    font-size: 20pt;
+}
+
+a {
     color: #f4741d;
     text-decoration: none;
 }
-h1 a:visited {
+a:visited {
     color: #f4741d;
 }
 
@@ -86,9 +95,9 @@ h1 a:visited {
 }
 
 #about p {
-    padding-left: 40px;
-    padding-right: 40px;
-    font-size: 4vmin;
+    padding-left: 10vmin;
+    padding-right: 10vmin;
+    font-size: 14pt;
 }
 
 #about.on {
@@ -96,27 +105,46 @@ h1 a:visited {
 }
 
 img.studio {
-    width: 50vw;
+    width: 50%;
     float: right;
-    margin-left:20px;
-    margin-right: 40px;
+    margin-left:10px;
+    margin-right: 10vmin;
     margin-bottom: 10px;
 }
 
 #closeBtn {
-    font-size: 8vmin;
-    font-weight: 100;
+    font-size: 15pt;
+    font-weight: 400;
     color: black;
     text-decoration: none;
-    float: right;
-    margin-right: 40px;
-    margin-top: 20px;
+   
+    position: absolute;
+    right: 10vmin;
+    top: 24px;
+    
 }
 
 @media screen and (max-aspect-ratio: 1/1) {
-    img.studio {
+    /* img.studio {
         width: calc(100% - 80px);
         float: none;
         margin-left: 40px;
+    } */
+
+    /* #about p {
+        font-size: 18pt;
+    } */
+}
+
+@media only screen and (max-width: 600px) {
+    img.studio {
+        width: 80vmin;
+        float: none;
+        margin-left: 10vmin;
+    }
+
+    iframe , img.item , #progress{ 
+        margin-bottom: 0px;
     }
 }
+
