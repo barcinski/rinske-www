@@ -90,8 +90,12 @@ a:visited {
     background-color: white;
     z-index: 10;
     text-align: left;
-    transition: left 500ms;
+    
     overflow-y: scroll;
+}
+
+#about.animate {
+    transition: left 500ms;
 }
 
 #about p {
