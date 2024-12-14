@@ -20,19 +20,22 @@
 
         <script>
             var lastClicked;
-            function goToFrame(href, src){
+            function goToFrame(src){
+                lastClicked.style.visibility = 'visible';
                 lastClicked = src;
 
 
                 //removing iFrame from dom and changin src prvents history entry
                 var foo = document.body.removeChild(myFrame)
-                foo.src = href;
+                foo.src = src.id + ".html";
                 document.body.appendChild(foo)
                
                 setIframePos(src)
                 
 
                 myFrame.style.visibility = 'hidden';
+                showFullBtn.style.visibility = 'hidden';
+                progress.style.visibility = 'visible'
 
                 return false; 
             }
@@ -40,6 +43,9 @@
             function setIframePos(target){
                 myFrame.style.left = target.offsetLeft  + "px";
                 myFrame.style.top = target.offsetTop  + "px";
+
+                showFullBtn.style.left = target.offsetLeft  + "px";
+                showFullBtn.style.top = target.offsetTop  + "px";
 
                 progress.style.left = target.offsetLeft  + "px";
                 progress.style.top = target.offsetTop  + "px";
@@ -56,6 +62,8 @@
 
             window.showIframme = function(){
                 myFrame.style.visibility = 'visible';
+                showFullBtn.style.visibility = 'visible';
+                progress.style.visibility = 'hidden'
             }
 
             function showAbout(){
@@ -78,6 +86,11 @@
                     about.classList.remove("on");
                 }
             };
+
+            function toggleInFull(){
+                location.href = "/" + lastClicked.id + ".html";
+                return;
+            }
 
 
         </script>
@@ -124,35 +137,31 @@
             <div class="loader"></div>
         </div>
         <iframe id="myFrame" src="kompleks_01.html" onload="console.log('iframe loaded')"></iframe>
+        <div id="showFullBtn" onclick="toggleInFull()">...</div>
         
 
-        <img id="image00" class="item" src="img/kompleks_01.jpg" onmouseenter="goToFrame('kompleks_01.html',this);" ontouchstart="return goToFrame('kompleks_01.html',this,true);"></img>
-       
-        <img class="item" src="img/kompleks_02.jpg" onmouseenter="return goToFrame('kompleks_02.html',this);" ontouchstart="return goToFrame('kompleks_02.html',this);"></img>
-
-        <img class="item" src="img/kompleks_07.jpg" onmouseenter="return goToFrame('kompleks_07.html',this);" ontouchstart="return goToFrame('kompleks_07.html',this);"></img>
-
-
-        <img class="item" src="img/A_fucking_walk.jpg" onmouseenter="return goToFrame('a_fucking_walk.html',this);" ontouchstart="return goToFrame('a_fucking_walk.html',this);"></img>
-
-        <img class="item" src="img/inevitable_conversation.jpg" onmouseenter="return goToFrame('inevitable_conversation.html',this);" ontouchstart="return goToFrame('inevitable_conversation.html',this);"></img>
-
-
-        <img class="item" src="img/mapa_03.jpg" onmouseenter="return goToFrame('mapa_03.html',this);" ontouchstart="return goToFrame('mapa_03.html',this);"></img>
-      
-
-        <img class="item" src="img/brainblock_07.jpg" onmouseenter="return goToFrame('brainblock_07.html',this);" ontouchstart="return goToFrame('brainblock_07.html',this,true);"></img>       
-
-        <img class="item" src="img/brainblock_14.jpg" onmouseenter="return goToFrame('brainblock_14.html',this);" ontouchstart="return goToFrame('brainblock_14.html',this);"></img>
-
-
-        <img class="item" src="img/oneblock.jpg" onmouseenter="return goToFrame('oneblock.html',this);" ontouchstart="return goToFrame('oneblock.html',this);"></img>
+        <img id="kompleks_01" class="item" src="img/kompleks_01.jpg"></img>
+        <img id="kompleks_02" class="item" src="img/kompleks_02.jpg"></img>
+        <img id="kompleks_07" class="item" src="img/kompleks_07.jpg"></img>
+        <img id="a_fucking_walk" class="item" src="img/a_fucking_walk.jpg"></img>
+        <img id="inevitable_conversation" class="item" src="img/inevitable_conversation.jpg"></img>
+        <img id="mapa_03" class="item" src="img/mapa_03.jpg"></img>
+        <img id="brainblock_07" class="item" src="img/brainblock_07.jpg"></img>       
+        <img id="brainblock_14" class="item" src="img/brainblock_14.jpg"></img>
+        <img id="oneblock" class="item" src="img/oneblock.jpg"></img>
 
         <p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p>
         
        
         <script>
-            setIframePos(image00);
+            const items = document.getElementsByClassName("item");
+            for(let i = 0; i < items.length; i++){
+                items[i].onmouseenter = function() {goToFrame(this)};
+                items[i].ontouchstart = function() {goToFrame(this)};
+            }
+
+            lastClicked = kompleks_01;
+            setIframePos(lastClicked);
         </script>
         
     </body>

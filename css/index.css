@@ -56,6 +56,11 @@ iframe , img.item , #progress{
     left: 0px;
 }
 
+#showFullBtn {
+    position: absolute;
+    z-index: 20;
+}
+
 h1,h2 {
     font-family: 'Cooper Black';
     font-size: 10vmin;
