@@ -15,46 +15,59 @@
         <title>rinske dekker</title>
         <meta name="description" content="Portfolio, selected works, projects and collaborations by artist Rinske Dekker.">
         <link href="https://fonts.cdnfonts.com/css/cooper-black" rel="stylesheet">
+        <link href="https://fonts.cdnfonts.com/css/helvetica-neue-55" rel="stylesheet">
+
         <link type="text/css" rel="stylesheet" href="css/index.css">
 
         <script>
             var lastClicked;
-            function goToFrame(href, src){
+            function goToFrame( src){
+                lastClicked.style.visibility = 'visible';
                 lastClicked = src;
 
 
+                
+
                 //removing iFrame from dom and changin src prvents history entry
                 var foo = document.body.removeChild(myFrame)
-                foo.src = href;
+                foo.src = src.id + ".html";
                 document.body.appendChild(foo)
                
+                myFrame.classList.remove("animated");
                 setIframePos(src)
                 
 
                 myFrame.style.visibility = 'hidden';
+                showFullBtn.style.visibility = 'hidden';
+                progress.style.visibility = 'visible'
 
                 return false; 
             }
 
             function setIframePos(target){
+                if(myFrame.classList.contains("full"))return;
+
                 myFrame.style.left = target.offsetLeft  + "px";
                 myFrame.style.top = target.offsetTop  + "px";
 
+                showFullBtn.style.left = target.offsetLeft  + "px";
+                showFullBtn.style.top = target.offsetTop  + "px";
+                
+
                 progress.style.left = target.offsetLeft  + "px";
                 progress.style.top = target.offsetTop  + "px";
+                
+                
             }
 
             window.onresize = function(){
-                if(lastClicked){
-                    setIframePos(lastClicked)
-                    
-                }else{
-                    setIframePos(image00)
-                }
+                setIframePos(lastClicked);
             }
 
             window.showIframme = function(){
                 myFrame.style.visibility = 'visible';
+                showFullBtn.style.visibility = 'visible';
+                progress.style.visibility = 'hidden'
             }
 
             function showAbout(){
@@ -71,12 +84,73 @@
 
             onpopstate = (event) => {
                 about.classList.remove("animate");
+                myFrame.classList.remove("animated");
+
                 if(location.hash === "#about"){
                     about.classList.add("on");
-                }else{
+                    hideInFull();
+                }else if(location.hash === "#" || location.hash === ""){
                     about.classList.remove("on");
+                    hideInFull();
+                    let frameSrc = myFrame.src.substr(myFrame.src.lastIndexOf("/")+1);
+                    console.log(frameSrc)
+                    if(frameSrc != lastClicked.id + ".html"){
+                        var foo = document.body.removeChild(myFrame)
+                        foo.src = lastClicked.id + ".html";
+                        document.body.appendChild(foo)
+                    }
+                }else{
+                    let src = location.hash.toString().replace("#", "");
+                    let frameSrc = myFrame.src.substr(myFrame.src.lastIndexOf("/")+1);
+                    if(frameSrc != src + ".html"){
+                        var foo = document.body.removeChild(myFrame)
+                        foo.src = src + ".html";
+                        document.body.appendChild(foo)
+                    }
+                       
+                    showInFull();
+                    myFrame.style.position = "fixed";
+                    myFrame.style.left = "0px";
+                    myFrame.style.top =  "0px";
+
                 }
             };
+
+            function toggleInFull(){
+                location.href = "/" + lastClicked.id + ".html";
+                return;
+                if(myFrame.classList.contains("full")){
+                    history.pushState({} , 'index', '#' );
+                    hideInFull();
+                }else{
+                    history.pushState({} , ""+lastClicked.id, '#' + lastClicked.id );
+                    myFrame.classList.add("animated");
+                    showInFull();
+                }   
+            }
+
+            function hideInFull(){
+                myFrame.classList.remove("full");
+
+                setIframePos(lastClicked);
+                showFullBtn.style.position = "absolute";
+                myFrame.style.position = "absolute";
+                //myFrame.style.left = "0px";
+                //myFrame.style.top = "0px";
+            }
+
+            function showInFull(){
+                lastClicked.style.visibility = 'hidden';
+
+                myFrame.classList.add("full");
+                
+                myFrame.style.left = "0px";
+                myFrame.style.top =  (window.scrollY ) + "px";
+
+                showFullBtn.style.position = "fixed";
+                showFullBtn.style.left = "0" + "px";
+                showFullBtn.style.top = "0"  + "px";  
+            }
 
 
         </script>
@@ -123,35 +197,37 @@
             <div class="loader"></div>
         </div>
         <iframe id="myFrame" src="kompleks_01.html" onload="console.log('iframe loaded')"></iframe>
+        <div id="showFullBtn" onclick="toggleInFull()">...</div>
         
 
-        <img id="image00" class="item" src="img/kompleks_01.jpg" onmouseenter="goToFrame('kompleks_01.html',this);" ontouchstart="return goToFrame('kompleks_01.html',this,true);"></img>
+        <img id="kompleks_01" class="item" src="img/kompleks_01.jpg" onmouseenter="return goToFrame(this);" ontouchstart="return goToFrame(this);"></img>
        
-        <img class="item" src="img/kompleks_02.jpg" onmouseenter="return goToFrame('kompleks_02.html',this);" ontouchstart="return goToFrame('kompleks_02.html',this);"></img>
+        <img id="kompleks_02" class="item" src="img/kompleks_02.jpg" onmouseenter="return goToFrame(this);" ontouchstart="return goToFrame(this);"></img>
 
-        <img class="item" src="img/kompleks_07.jpg" onmouseenter="return goToFrame('kompleks_07.html',this);" ontouchstart="return goToFrame('kompleks_07.html',this);"></img>
-
-
-        <img class="item" src="img/A_fucking_walk.jpg" onmouseenter="return goToFrame('a_fucking_walk.html',this);" ontouchstart="return goToFrame('a_fucking_walk.html',this);"></img>
-
-        <img class="item" src="img/inevitable_conversation.jpg" onmouseenter="return goToFrame('inevitable_conversation.html',this);" ontouchstart="return goToFrame('inevitable_conversation.html',this);"></img>
+        <img id="kompleks_07" class="item" src="img/kompleks_07.jpg" onmouseenter="return goToFrame(this);" ontouchstart="return goToFrame(this);"></img>
 
 
-        <img class="item" src="img/mapa_03.jpg" onmouseenter="return goToFrame('mapa_03.html',this);" ontouchstart="return goToFrame('mapa_03.html',this);"></img>
+        <img id="a_fucking_walk" class="item" src="img/a_fucking_walk.jpg" onmouseenter="return goToFrame(this);" ontouchstart="return goToFrame(this);"></img>
+
+        <img id="inevitable_conversation" class="item" src="img/inevitable_conversation.jpg" onmouseenter="return goToFrame(this);" ontouchstart="return goToFrame(this);"></img>
+
+
+        <img id="mapa_03" class="item" src="img/mapa_03.jpg" onmouseenter="return goToFrame(this);" ontouchstart="return goToFrame(this);"></img>
       
 
-        <img class="item" src="img/brainblock_07.jpg" onmouseenter="return goToFrame('brainblock_07.html',this);" ontouchstart="return goToFrame('brainblock_07.html',this,true);"></img>       
+        <img id="brainblock_07" class="item" src="img/brainblock_07.jpg" onmouseenter="return goToFrame(this);" ontouchstart="return goToFrame(this);"></img>       
 
-        <img class="item" src="img/brainblock_14.jpg" onmouseenter="return goToFrame('brainblock_14.html',this);" ontouchstart="return goToFrame('brainblock_14.html',this);"></img>
+        <img id="brainblock_14" class="item" src="img/brainblock_14.jpg" onmouseenter="return goToFrame(this);" ontouchstart="return goToFrame(this);"></img>
 
 
-        <img class="item" src="img/oneblock.jpg" onmouseenter="return goToFrame('oneblock.html',this);" ontouchstart="return goToFrame('oneblock.html',this);"></img>
+        <img id="oneblock" class="item" src="img/oneblock.jpg" onmouseenter="return goToFrame(this);" ontouchstart="return goToFrame(this);"></img>
 
         <p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p>
         
        
         <script>
-            setIframePos(image00);
+            lastClicked = kompleks_01;
+            setIframePos(lastClicked);
         </script>
         
     </body>
