@@ -1,0 +1,139 @@
+@import url('https://fonts.cdnfonts.com/css/cooper-black');
+
+body {
+    margin: 0;
+    background-color: #edc1c1;
+    color: #f4741d;
+    font-family: 'Cooper Black', sans-serif;
+    text-align: center;
+}
+img  {
+    /* width: 100vw; */
+    max-width: 90vw;
+    max-height: 100vw;
+    vertical-align: top;
+    
+}
+
+text {
+    width: 90vw;
+}
+
+h1  {
+    font-size: 4.5em;
+    text-align: center;
+    margin-top: 0.5em;
+}
+
+h2 {
+    font-size: 2.5em;
+    text-align: center;
+}
+
+h3 {
+    font-size: 3em;
+    text-align: center;
+}
+
+p {
+    font-size: 1.5em;
+    text-align: center;
+    margin-top: 0;
+    margin-bottom: 1em;
+}
+
+
+text p {
+    font-size: 1.4em;
+    /* text-align: left; */
+}
+
+a , a:visited {
+    color: #f4741d;
+    text-decoration: none;
+}
+
+a.item , item , text {
+    display: inline-table;
+}
+
+item {
+    margin-bottom: 5vw;
+}
+
+@media  (max-width: 1000px) {
+    /* This hides h3 when there is a text item */
+    h3:has(+ item text) {
+        display: none;
+    }
+}
+
+@media  (min-width: 1000px) {
+    img {
+        max-width: 47vw;
+        max-height: 49.6vw;
+    }
+
+    text {
+        width : 47vw;
+    }
+
+    a.item , item {
+        width: 49.6vw;
+    }
+
+    item {
+        margin-bottom: 3vw;
+    }
+
+
+}
+
+@media  (min-width: 1400px) {
+    img  {
+        max-width: 31vw;
+        max-height: 33vw;
+    }
+
+    text {
+        width: 31vw;
+    }
+
+    a.item , item{
+        width: 33.0vw;
+    }
+
+    item {
+        margin-bottom: 2vw;
+    }
+}
+
+@media  (min-width: 1800px) {
+    img , text{
+        width: auto;
+        max-width: 23vw;
+        max-height: 24.75vw;
+    }
+
+    a.item , item {
+        width: 24.75vw;
+    }
+
+}
+
+@media  (min-width: 2400px) {
+    img , text{
+        width: auto;
+        max-width: 17.75vw;
+        max-height: 18.0vw;
+    }
+    
+    a.item , item{
+        width: 19.8vw;
+    }
+
+    item {
+        margin-bottom: 2.25vw;
+    }
+    
+}
