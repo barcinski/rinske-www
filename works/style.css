@@ -8,10 +8,11 @@ body {
     text-align: center;
 }
 
-img  {
+img , iframe {
    
     width: 100%;
     object-fit: cover;
+    border-radius: 15%;
     
     height: 80vw; /* fix for chrome*/
 }
@@ -21,9 +22,10 @@ text {
 }
 
 h1  {
-    font-size: 4.5em;
+    font-size: 4.0em;
     text-align: center;
     margin-top: 0.5em;
+    margin-bottom: 0.1em;
 }
 
 h2 {
@@ -32,12 +34,12 @@ h2 {
 }
 
 h3 {
-    font-size: 3em;
+    font-size: 1.6em;
     text-align: center;
 }
 
 p {
-    font-size: 1.5em;
+    font-size: 1.4em;
     text-align: center;
     margin-top: 0;
     margin-bottom: 1em;
@@ -63,8 +65,13 @@ item {
    
     /* background-color: white; */
     overflow: hidden;
-    border-radius: 15%;
+    
     margin: 3vw;
+}
+
+iframe {
+    border-radius: 15%;
+    border: 0;
 }
 
 
@@ -76,16 +83,17 @@ item {
 
 
 
+
 @media  (min-width: 900px) {
     a.item , item {
-        width: 40vw;
-        height: 40vw;
+        width: 38vw;
+        height: 38vw;
     }
 
-    item {margin: 2vw;}
+    item {margin: 3vw;}
 
-    img {
-        height: 40vw; /* fix for chrome*/
+    img , iframe {
+        height: 38vw; /* fix for chrome*/
     }
    
 
@@ -96,33 +104,33 @@ item {
    
 
     a.item , item{
-        width: 28.0vw;
-        height: 28.0vw;
+        width: 26.0vw;
+        height: 26.0vw;
          
     }
     item {margin: 2.0vw;}
 
-    img {
-        height: 28vw; /* fix for chrome*/
+    img , iframe{
+        height: 26vw; /* fix for chrome*/
     }
   
 }
 
 
 
-@media  (min-width: 1400px) {
+@media  (min-width: 1200px) {
     a.item , item{
         width: 20.0vw;
         height: 20.0vw;
     }
     item {margin: 1.5vw}
 
-    img {
+    img , iframe {
         height: 20vw; /* fix for chrome*/
     }
 }
 
-@media  (min-width: 2000px) {
+@media  (min-width: 1500px) {
      a.item , item{
         width: 15.0vw;
         height: 15.0vw;
@@ -130,7 +138,7 @@ item {
     }
     item {margin: .8vw}
 
-    img {
+    img , iframe {
         height: 15vw; /* fix for chrome*/
     }
 }
