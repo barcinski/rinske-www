@@ -13,15 +13,12 @@
 
 			
 
-			a {
-				color: #08f;
-			}
 
 			#content {
 				position: absolute;
 				top: 0; width: 100%;
 				z-index: 1;
-				padding: 3em 0 0 0;
+				padding: 0 0 0 0;
 			}
 
 			#c {
@@ -35,7 +32,7 @@
 				display: inline-block;
 				margin: 1em;
 				padding: 1em;
-				box-shadow: 1px 2px 4px 0px rgba(0,0,0,0.25);
+				
 			}
 
 			.list-item > div:nth-child(1) {
@@ -43,13 +40,7 @@
 				height: 200px;
 			}
 
-			.list-item > div:nth-child(2) {
-				color: #888;
-				font-family: sans-serif;
-				font-size: large;
-				width: 200px;
-				margin-top: 0.5em;
-			}
+			
 		</style>
 	</head>
 	<body>
@@ -57,8 +48,12 @@
 		<canvas id="c"></canvas>
 
 		<div id="content">
-			<div id="info"><a href="https://threejs.org" target="_blank" rel="noopener">three.js</a> - multiple elements - webgl</div>
+			<h1>Rinske Dekker</h1>
+			<h2>Home</h2>
+			<h3>Selected <a href="works/">Works</a></h3>
 		</div>
+
+		
 
 		<script type="importmap">
 			{
@@ -94,7 +89,7 @@
 
 				const content = document.getElementById( 'content' );
 
-				for ( let i = 0; i < 40; i ++ ) {
+				for ( let i = 0; i < 8; i ++ ) {
 
 					const scene = new THREE.Scene();
 
@@ -150,7 +145,7 @@
 
 
 				renderer = new THREE.WebGLRenderer( { canvas: canvas, antialias: true } );
-				renderer.setClearColor( 0xffffff, 1 );
+				// renderer.setClearColor( 0xffff00, 1 );
 				renderer.setPixelRatio( window.devicePixelRatio );
 				renderer.setAnimationLoop( animate );
 
@@ -175,7 +170,7 @@
 
 				canvas.style.transform = `translateY(${window.scrollY}px)`;
 
-				renderer.setClearColor( 0xffffff );
+				renderer.setClearColor( 0xedc1c1 );
 				renderer.setScissorTest( false );
 				renderer.clear();
 

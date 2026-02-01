@@ -12,9 +12,8 @@ img , iframe {
    
     width: 100%;
     object-fit: cover;
-    border-radius: 15%;
-    
-    height: 80vw; /* fix for chrome*/
+   
+    height: 240px; /* fix for chrome*/
 }
 
 text {
@@ -61,12 +60,10 @@ a.item , item , text {
 }
 
 item {
-    /* padding-top: 5%; */
    
-    /* background-color: white; */
     overflow: hidden;
-    
-    margin: 3vw;
+    border-radius: 15%;
+    margin: 25px;
 }
 
 iframe {
@@ -76,70 +73,10 @@ iframe {
 
 
  a.item , item {
-    width: 80vw;
-    height: 80vw;
+    width: 240px;
+    height: 240px;
 }
 
 
 
-
-
-@media  (min-width: 900px) {
-    a.item , item {
-        width: 38vw;
-        height: 38vw;
-    }
-
-    item {margin: 3vw;}
-
-    img , iframe {
-        height: 38vw; /* fix for chrome*/
-    }
-   
-
-}
-
-
-@media  (min-width: 1100px) {
-   
-
-    a.item , item{
-        width: 26.0vw;
-        height: 26.0vw;
-         
-    }
-    item {margin: 2.0vw;}
-
-    img , iframe{
-        height: 26vw; /* fix for chrome*/
-    }
-  
-}
-
-
-
-@media  (min-width: 1200px) {
-    a.item , item{
-        width: 20.0vw;
-        height: 20.0vw;
-    }
-    item {margin: 1.5vw}
-
-    img , iframe {
-        height: 20vw; /* fix for chrome*/
-    }
-}
-
-@media  (min-width: 1500px) {
-     a.item , item{
-        width: 15.0vw;
-        height: 15.0vw;
-         
-    }
-    item {margin: .8vw}
-
-    img , iframe {
-        height: 15vw; /* fix for chrome*/
-    }
-}
 
