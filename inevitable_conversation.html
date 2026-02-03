@@ -23,7 +23,7 @@
 			import * as THREE from 'three';
 
 			import { OrbitControls } from 'three/addons/controls/OrbitControls.js';
-			import { USDLoader } from 'three/addons/loaders/USDLoader.js';
+			import { GLTFLoader } from 'three/addons/loaders/GLTFLoader.js';
             
 			
 			let camera, scene, renderer;
@@ -42,10 +42,10 @@
 				scene = new THREE.Scene();
 
 
-                const loader = new USDLoader().setPath( 'models/usdz/' );
-                loader.load( 'Inevitable_conversation.usdz', async function ( usdz ) {
+                const loader = new GLTFLoader().setPath( 'models/' );
+                loader.load( 'Inevitable_conversation.gltf', async function ( gltf ) {
 
-                    model = usdz;
+                    model = gltf.scene;
 
 					const scale = 10.5;
                     model.scale.set(scale,scale,scale);
