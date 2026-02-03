@@ -342,6 +342,7 @@
     }
 }
 
+/*
 @media (max-width:1000px) {
     .spl-header{
        height: 50px;
@@ -377,7 +378,7 @@
         background-size: 60px 60px
     }
 }
-
+*/
 .hide-scrollbars {
     overflow: hidden !important
 }
