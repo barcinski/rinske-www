@@ -46,6 +46,11 @@ p {
     margin-bottom: 1em;
 }
 
+p.underFrame {
+    margin-top: 1em;
+    margin-bottom: 0em;
+}
+
 
 text p {
     font-size: 1.4em;
