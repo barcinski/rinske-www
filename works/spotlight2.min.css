@@ -17,7 +17,7 @@
     width: 100%;
     z-index: 99999;
     color: #fff;
-    background-color: #edc1c1;
+    background-color: #000;
     opacity: 0;
     overflow: hidden;
     -webkit-user-select: none;
@@ -341,8 +341,6 @@
         opacity: 1
     }
 }
-
-
 
 @media (max-width:500px) {
     .spl-header div {
