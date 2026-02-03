@@ -23,10 +23,12 @@ text {
 }
 
 h1  {
-    font-size: 4.0em;
     text-align: center;
+
+    font-size: 4.0em;
     margin-top: 0.5em;
     margin-bottom: 0.1em;
+
 }
 
 h2 {
@@ -85,17 +87,23 @@ iframe {
 }
 
 
-@media only screen and (max-width: 980px) {
+@media only screen and (max-width: 650px) {
+    body { font-size:0.5em}
+
      a.item , item {
-        width: 340px;
-        height: 340px;
+        width: 130px;
+        height: 130px;
     }
     iframe {
-        width: 340px;
+        width: 130px;
+    }
+
+    item {
+        margin: 5px;
     }
 
     item img , iframe {
-        height: 340px;
+        height: 130px;
     }
 }
 
