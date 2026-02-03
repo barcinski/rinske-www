@@ -41,8 +41,8 @@
 				scene = new THREE.Scene();
 
 
-                const loader = new GLTFLoader().setPath( 'models/' );
-                loader.load( 'Kompleks_01.gltf', async function ( gltf ) {
+                const loader = new GLTFLoader().setPath( 'models/glb/' );
+                loader.load( 'Kompleks_01.glb', async function ( gltf ) {
 
                     const model = gltf.scene;
 
@@ -61,7 +61,7 @@
     
                 } );
 
-				loader.load( 'Kompleks_02.gltf', async function ( gltf ) {
+				loader.load( 'Kompleks_02.glb', async function ( gltf ) {
 
 					const model = gltf.scene;
 
@@ -79,7 +79,7 @@
 
 				} );
 
-				loader.load( 'brainblock_14.gltf', async function ( gltf ) {
+				loader.load( 'brainblock_14.glb', async function ( gltf ) {
 
 					const model = gltf.scene;
 

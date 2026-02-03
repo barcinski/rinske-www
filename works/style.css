@@ -78,5 +78,14 @@ iframe {
 }
 
 
+@media only screen and (max-width: 980px) {
+     a.item , item {
+        width: 340px;
+        height: 340px;
+    }
 
+    img , iframe {
+        height: 340px;
+    }
+}
 
