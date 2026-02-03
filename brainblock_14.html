@@ -12,7 +12,7 @@
 		<script type="importmap">
 			{
 				"imports": {
-					"three": "https://cdnjs.cloudflare.com/ajax/libs/three.js/0.167.0/three.module.min.js",
+					"three": "./js/three.module.js",
 					"three/addons/": "./js/"
 				}
 			}
@@ -23,7 +23,7 @@
 			import * as THREE from 'three';
 
 			import { OrbitControls } from 'three/addons/controls/OrbitControls.js';
-			import { GLTFLoader } from 'three/addons/loaders/GLTFLoader.js';
+			import { USDLoader } from 'three/addons/loaders/USDLoader.js';
             
 			
 			let camera, scene, renderer;
@@ -42,10 +42,10 @@
 				scene = new THREE.Scene();
 
 
-                const loader = new GLTFLoader().setPath( 'models/' );
-                loader.load( 'Brainblock_14.gltf', async function ( gltf ) {
+                const loader = new USDLoader().setPath( 'models/usdz/' );
+                loader.load( 'Brainblock_14.usdz', async function ( usdz ) {
 
-                    model = gltf.scene;
+                    model = usdz;
 
                     model.scale.set(11,11,11);
 					//model.rotateY(1.05 - Math.PI/2)
