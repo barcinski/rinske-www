@@ -8,10 +8,12 @@ body {
     text-align: center;
 }
 
-img , iframe {
+item img , iframe {
    
     width: 100%;
     object-fit: cover;
+
+    border-radius: 15%;
    
     height: 240px; /* fix for chrome*/
 }
@@ -62,14 +64,13 @@ a.item , item , text {
 item {
    
     overflow: hidden;
-    border-radius: 15%;
     margin: 20px;
 
 }
 
 iframe {
-    border-radius: 15%;
     border: 0;
+    width: 240px;
 }
 
 
@@ -83,6 +84,9 @@ iframe {
      a.item , item {
         width: 340px;
         height: 340px;
+    }
+    iframe {
+        width: 340px;
     }
 
     img , iframe {
