@@ -70,17 +70,19 @@ a.item , item , text {
 }
 
 item {
-   
     overflow: hidden;
     margin: 14px;
+}
 
+item p {
+     margin-top: 1em;
 }
 
 iframe {
     border: 0;
     width: 240px;
 
-    margin-bottom: 1em;
+   
 }
 
 
