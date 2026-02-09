@@ -63,7 +63,14 @@
 			}
 		</script>
 
+		<script>
+			
+		
+		</script>
+
+
 		<script type="module">
+			
 
 			import * as THREE from 'three';
 
@@ -74,10 +81,20 @@
 
 			const scenes = [];
 
-			init();
+			
+
+			window.onpageshow = function(event) {
+				if (event.persisted) {
+					//console.log("page show presisted")
+					// Page was restored from bfcache
+				}else {
+					//console.log("page show")
+					init();
+				}
+			};
 
 			function init() {
-
+				//console.log("init called")
 				canvas = document.getElementById( 'c' );
 
 				const urls = [
@@ -136,7 +153,7 @@
 
 						const scale = urls[i][3];
 						model.scale.set(scale,scale,scale);
-						//model.rotateY(1 - Math.PI/2)
+						// model.rotation.y = Date.now() * -0.00075;
 						model.position.set(0,-.8,0)
 
 						// wait until the model can be added to the scene without blocking due to shader compilation
@@ -190,7 +207,7 @@
 
 					// so something moves
 					if(scene.children[0])
-					scene.children[ 0 ].rotation.y = Date.now() * -0.00075;
+					scene.children[ 0 ].rotation.y -= 0.01//Date.now() * -0.00075;
 
 					// get the element that is a place holder for where we want to
 					// draw the scene
