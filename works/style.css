@@ -11,14 +11,14 @@ body {
     text-align: center;
 }
 
-item img , iframe {
+item img , item div{
    
     width: 100%;
     object-fit: cover;
 
-    border-radius: 15%;
+    /* border-radius: 15%; */
    
-    height: 240px; /* fix for chrome*/
+    height: 200px; /* fix for chrome*/
 }
 
 text {
@@ -48,7 +48,7 @@ h3 {
 }
 
 p {
-    font-size: 1.4em;
+    font-size: 1.0em;
     text-align: center;
     margin-top: 0;
     margin-bottom: 1em;
@@ -56,7 +56,7 @@ p {
 
 
 text p {
-    font-size: 1.4em;
+    font-size: 1.0em;
     /* text-align: left; */
 }
 
@@ -67,35 +67,41 @@ a , a:visited {
 
 a.item , item , text {
     display: inline-table;
+    /* border:  1px solid black; */
 }
 
 item {
     overflow: hidden;
-    margin: 14px;
+    margin: 28px;
 }
 
-item p {
-     margin-top: 1em;
+a.item p{
+     margin-top:  -1.5em;
 }
+
+item div {
+     margin-bottom:  .5em;
+}
+
+
+
+ a.item , item , item div{
+    width: 200px;
+    height: 200px;
+}
+
 
 iframe {
     border: 0;
-    width: 240px;
-
-   
-}
-
-
- a.item , item {
-    width: 240px;
-    height: 240px;
+    width: 200px;
+    height: 200px;
 }
 
 
 @media only screen and (max-width: 650px) {
     body { font-size:0.5em}
 
-     a.item , item {
+     a.item , item , item div {
         width: 120px;
         height: 120px;
     }
@@ -104,11 +110,17 @@ iframe {
     }
 
     item {
-        margin: 7px;
+        margin-top:10px;
+        margin-left: 10px;
+        margin-right: 10px;
     }
 
     item img , iframe {
         height: 120px;
+    }
+
+    text p, p , item a {
+        font-size: 15px;
     }
 }
 

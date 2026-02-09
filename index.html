@@ -1,6 +1,7 @@
-<html>
-    <head>
-        <!-- Google tag (gtag.js) -->
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+         <!-- Google tag (gtag.js) -->
         <script async src="https://www.googletagmanager.com/gtag/js?id=G-YZRNXYYPJ2"></script>
         <script>
             window.dataLayer = window.dataLayer || [];
@@ -9,64 +10,232 @@
 
             gtag('config', 'G-YZRNXYYPJ2');
         </script>
-        
-        <title>Rinske Dekker</title>
-        <link rel="stylesheet" type="text/css" href="works/style.css">
 
-       
-    <meta name="viewport" content="width=device-width">
+
+		<title>Rinske Dekker - Selected Works</title>
+		<meta charset="utf-8">
+		<link type="text/css" rel="stylesheet" href="works/style.css">
+		<style>
+			/* * {
+				box-sizing: border-box;
+				-moz-box-sizing: border-box;
+			} */
+
+			
+
+
+			#content {
+				position: absolute;
+				top: 0; width: 100%;
+				z-index: 1;
+				padding: 0 0 0 0;
+			}
+
+			#c {
+				position: absolute;
+				left: 0;
+				width: 100%;
+				height: 100%;
+			}
+
+
+            item {
+               
+                margin-bottom: 1em;
+            }
+
+			
+		</style>
+		<meta name="viewport" content="width=device-width">
     </head>
-    <body>
-         <h1><a href="about.html">Rinske Dekker</a></h1>
-        <h2>Home</h2>
-        <h3>Selected <a href="works/">Works</a></h3>
+	<body>
 
-        
-        
-        <item>
-            <iframe src="kompleks_01.html"></iframe>
-            <p><a href="works/Kompleks/Kompleks_1/" >Kompleks 1</a></p>
-        </item>
-    
-        <item>
-            <iframe src="kompleks_02.html"></iframe>
-            <p><a href="works/Kompleks/Kompleks_2/">Kompleks 2</a></p>
-        </item>
-        
-        <item>
-            <iframe src="kompleks_07.html"></iframe>
-            <p><a href="works/Kompleks/Kompleks_7/">Kompleks 7</a></p>
-        </item>
+		<canvas id="c"></canvas>
 
-        <item>
-            <iframe src="a_fucking_walk.html"></iframe>
-            <p><a href="works/The_Observers/A_fucking_walk/">A fucking walk for my mental health</a></p>
-        </item>
+		<div id="content">
+			<h1><a href="about.html">Rinske Dekker</a></h1>
+			<h2>Home</h2>
+			<h3>Selected <a href="works/">Works</a></h3>
+		</div>
+
+		
+
+		<script type="importmap">
+			{
+				"imports": {
+					"three": "./js/three.module.min.js",
+					"three/addons/": "./js/"
+				}
+			}
+		</script>
+
+		<script type="module">
+
+			import * as THREE from 'three';
+
+			import { OrbitControls } from 'three/addons/controls/OrbitControls.js';
+			import { GLTFLoader } from 'three/addons/loaders/GLTFLoader.js';
+
+			let canvas, renderer;
+
+			const scenes = [];
+
+			init();
+
+			function init() {
+
+				canvas = document.getElementById( 'c' );
+
+				const urls = [
+					["A_fucking_walk", "A fucking walk" , "works/The_Observers/A_fucking_walk/" , 11] , 
+					["Kompleks_01", "Kompleks 1" , "works/Kompleks/Kompleks_1/" , 12] , 
+					["Kompleks_02", "Kompleks 2" , "works/Kompleks/Kompleks_2/" , 8.5] , 
+					["Kompleks_07", "Kompleks 7" , "works/Kompleks/Kompleks_7/" , 12] ,
+					["Brainblock_07", "Brainblock 7" , "works/Bloks/Blok_7/" , 10] , 
+					["Brainblock_14", "Brainblock 14" , "works/Bloks/Blok_14/" , 11] ,
+					["Inevitable_conversation", "Inevitable conversation" , "works/Heads_Up/The_Inevitable_Conversation/" , 10.5] ,  
+					["Mapa_03", "Mapa 3" , "works/Mapa/Mapa_3/" , 12]
+				]
+
+				
+
+				const content = document.getElementById( 'content' );
+
+				for ( let i = 0; i < 8; i ++ ) {
+
+					const scene = new THREE.Scene();
+
+					// make a list item
+					const element = document.createElement( 'item' );
+					// element.className = 'list-item';
+
+					const sceneElement = document.createElement( 'div' );
+					element.appendChild( sceneElement );
+
+					const descriptionElement = document.createElement( 'a' );
+                    descriptionElement.href = urls[i][2];
+					descriptionElement.innerText = urls[i][1];
+					element.appendChild( descriptionElement );
+
+					// the element that represents the area we want to render the scene
+					scene.userData.element = sceneElement;
+					content.appendChild( element );
+
+					const camera = new THREE.PerspectiveCamera( 50, 1, 1, 10 );
+					camera.position.z = 2.7;
+					scene.userData.camera = camera;
+
+					const controls = new OrbitControls( scene.userData.camera, scene.userData.element );
+					controls.minDistance = 2;
+					controls.maxDistance = 5;
+					controls.enablePan = false;
+					controls.enableZoom = false;
+					scene.userData.controls = controls;
+
+					
+
+					const loader = new GLTFLoader().setPath( 'models/' );
+                	loader.load( urls[i][0] + ".glb", async function ( gltf ) {
+						//scene.add( new THREE.Mesh( geometry, material ) );
+
+						const model = gltf.scene;
+
+						const scale = urls[i][3];
+						model.scale.set(scale,scale,scale);
+						//model.rotateY(1 - Math.PI/2)
+						model.position.set(0,-.8,0)
+
+						// wait until the model can be added to the scene without blocking due to shader compilation
+
+						await renderer.compileAsync( model, camera, scene );
+
+						scene.add( model );
+					} );
+
+					
+
+					scenes.push( scene );
+
+				}
 
 
-        <item>
-            <iframe src="inevitable_conversation.html"></iframe>
-            <p><a href="works/Heads_Up/The_Inevitable_Conversation/">Inevitable Conversation</a></p>
-        </item>
-        
+				renderer = new THREE.WebGLRenderer( { canvas: canvas, antialias: true } );
+				// renderer.setClearColor( 0xffffff, 1 );
+				renderer.setPixelRatio( window.devicePixelRatio );
+				renderer.setAnimationLoop( animate );
 
-        <item>
-            <iframe src="mapa_03.html"></iframe>
-            <p><a href="works/Mapa/Mapa_3/">Mapa 3</a></p>
-        </item>
+			}
 
+			function updateSize() {
 
-        <item>
-            <iframe src="brainblock_07.html"></iframe>
-            <p><a href="works/Bloks/Blok_7/">Brainblock 7</a></p>
-        </item>
+				const width = canvas.clientWidth;
+				const height = canvas.clientHeight;
 
-        <item>
-            <iframe src="brainblock_14.html"></iframe>
-            <p><a href="works/Bloks/Blok_14/">Brainblock 14</a></p>
-        </item>
+				if ( canvas.width !== width || canvas.height !== height ) {
 
-        
-    </body>
+					renderer.setSize( width, height, false );
 
+				}
+
+			}
+
+			function animate() {
+
+				updateSize();
+
+				canvas.style.transform = `translateY(${window.scrollY}px)`;
+
+				renderer.setClearColor( 0xedc1c1 );
+				renderer.setScissorTest( false );
+				renderer.clear();
+
+				renderer.setClearColor( 0xffffff );
+				renderer.setScissorTest( true );
+
+				scenes.forEach( function ( scene ) {
+
+					// so something moves
+					if(scene.children[0])
+					scene.children[ 0 ].rotation.y = Date.now() * -0.00075;
+
+					// get the element that is a place holder for where we want to
+					// draw the scene
+					const element = scene.userData.element;
+
+					// get its position relative to the page's viewport
+					const rect = element.getBoundingClientRect();
+
+					// check if it's offscreen. If so skip it
+					if ( rect.bottom < 0 || rect.top > renderer.domElement.clientHeight ||
+						 rect.right < 0 || rect.left > renderer.domElement.clientWidth ) {
+
+						return; // it's off screen
+
+					}
+
+					// set the viewport
+					const width = rect.right - rect.left;
+					const height = rect.bottom - rect.top;
+					const left = rect.left;
+					const bottom = renderer.domElement.clientHeight - rect.bottom;
+
+					renderer.setViewport( left, bottom, width, height );
+					renderer.setScissor( left, bottom, width, height );
+
+					const camera = scene.userData.camera;
+
+					//camera.aspect = width / height; // not changing in this example
+					//camera.updateProjectionMatrix();
+
+					//scene.userData.controls.update();
+
+					renderer.render( scene, camera );
+
+				} );
+
+			}
+
+		</script>
+
+	</body>
 </html>
