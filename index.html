@@ -32,11 +32,19 @@
 			}
 
 			#c {
-				position: absolute;
+				position: relative;
 				left: 0;
 				width: 100%;
-				height: 100%;
+				height: 100vh;
 			}
+
+
+			item > a {
+				margin-top: 0.5em;
+				display: block;
+				margin-bottom: 0; 
+			}
+
 
 			
 		</style>
@@ -179,6 +187,8 @@
 
 			function updateSize() {
 
+				c.style.height = content.offsetHeight + "px"; 
+
 				const width = canvas.clientWidth;
 				const height = canvas.clientHeight;
 
@@ -194,7 +204,7 @@
 
 				updateSize();
 
-				canvas.style.transform = `translateY(${window.scrollY}px)`;
+				// canvas.style.transform = `translateY(${window.scrollY}px)`;
 
 				renderer.setClearColor( 0xedc1c1 );
 				renderer.setScissorTest( false );
@@ -215,6 +225,8 @@
 
 					// get its position relative to the page's viewport
 					const rect = element.getBoundingClientRect();
+					rect.y += window.scrollY;
+					rect.x += window.scrollX;
 
 					// check if it's offscreen. If so skip it
 					if ( rect.bottom < 0 || rect.top > renderer.domElement.clientHeight ||
