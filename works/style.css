@@ -11,6 +11,20 @@ body {
     text-align: center;
 }
 
+.navlink , .subnav{
+    font-weight: 300;
+    /* text-decoration: underline; */
+}
+
+.subnav {
+    /* margin-top: -1em; */
+    
+}
+
+thin {
+    font-weight: 200;
+}
+
 item > img , item > div , a.item > img{
    
     width: 100%;
@@ -107,6 +121,8 @@ iframe {
     width: 200px;
     height: 200px;
 }
+
+
 
 
 @media only screen and (max-width: 650px) {
