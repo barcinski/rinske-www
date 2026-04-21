@@ -9,6 +9,8 @@ body {
    
     font-family: 'Caros Soft', sans-serif;
     text-align: center;
+
+    padding-bottom: 2em;
 }
 
 .navlink , .subnav{
